@@ -1,15 +1,15 @@
 /*Faça um programa que faça 5 perguntas para uma pessoa sobre um crime. As
 perguntas são:
-1. &quot;Telefonou para a vítima?&quot;
-2. &quot;Esteve no local do crime?&quot;
-3. &quot;Mora perto da vítima?&quot;
-4. &quot;Devia para a vítima?&quot;
-5. &quot;Já trabalhou com a vítima?&quot;
+1. Telefonou para a vítima?&quot;
+2. Esteve no local do crime?&quot;
+3. Mora perto da vítima?&quot;
+4. Devia para a vítima?&quot;
+5. Já trabalhou com a vítima?&quot;
 
 O programa deve no final emitir uma classificação sobre a participação da
 pessoa no crime.
 Se a pessoa responder positivamente a 2 questões ela deve ser classificada
-como Suspeita, entre 3 e 4 como ;Cúmplice; e 5 como ;Assassino;. Caso contrário, ele será classificado como &quot;Inocente.*/
+como Suspeita, entre 3 e 4 como Cúmplice e 5 como Assassino. Caso contrário, ele será classificado como Inocente.*/
 
 
 let p1 = prompt ("Você telefonou para a vítima? [S/N]");
