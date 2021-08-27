@@ -1,5 +1,7 @@
 const prompt = require ('prompt-sync')();
-
+function  verificaVencedor (jogador1, jogador2) {
+    return jogador1 == 0 && jogador2 == 2 || jogador1 == 1 && jogador2 == 0 || jogador1 == 2 && jogador2 == 1
+}
 let jogarnovamente = 1;
 while (jogarnovamente == 1) {
 
@@ -19,7 +21,7 @@ while (jogarnovamente == 1) {
     let jogada = prompt ("Você quer escolher pedra, papel ou tesoura? Responda com 0 para pedra, 1 para papel e 2 para tesoura");
 
     while (jogada != 2 && jogada != 1 && jogada != 0) {
-      jogada = prompt ("Jogue um número válido (0 para pedra, 1 para papel ou 2 para tesoura")
+      jogada = prompt ("Jogue um número válido (0 para pedra, 1 para papel ou 2 para tesoura)")
       };
       
       if (jogada == 0) {
@@ -41,18 +43,17 @@ while (jogarnovamente == 1) {
       console.log ("Jogada pc: Tesoura")
     };
 
-  
     if (jogadapc == jogada) {
       empate = empate + 1
       console.log ("Empate")
     }; 
 
-    if (jogadapc == 0 && jogada == 2 || jogadapc == 1 && jogada == 0 || jogadapc == 2 && jogada == 1) {
+    if (verificaVencedor(jogadapc, jogada)) {
       derrota = derrota + 1
       console.log ("Você perdeu!")
     };
 
-    if (jogadapc == 1 && jogada == 2 || jogadapc == 0 && jogada == 1 || jogadapc == 2 && jogada == 0 ) {
+    if (verificaVencedor(jogada, jogadapc)) {
       vitoria = vitoria + 1
       console.log ("Você ganhou!")
     }
@@ -80,6 +81,4 @@ while (jogarnovamente == 1) {
     }
       if (jogarnovamente == 2) {
         console.log ("Fim de jogo!")}
-    
-
 }
