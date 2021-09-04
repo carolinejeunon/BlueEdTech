@@ -1,0 +1,83 @@
+const prompt = require ('prompt-sync')();
+
+class Jogador {
+    constructor(nome){
+        this.nome = nome;
+        this.vencedor=0
+    }
+
+    GetRandomIntInclusive (min, max){
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random()*(max-min+1))+min
+    }
+
+    Rolar(){
+        this.numeroTirado = this.GetRandomIntInclusive(1, 6)
+    }
+
+    vencedorRodada(){
+        this.vencedor++;
+    }
+}
+
+const lista = []
+
+let rodadas = 0
+
+do {
+    rodadas = +prompt("Quantas rodadas você quer jogar? ");
+} while (isNaN(rodadas))
+
+
+let jogadores = 0 
+
+do{ 
+    jogadores = +prompt("Quantos jogadores vão participar? ");
+} while (isNaN(jogadores))
+
+
+for (i=0; i<jogadores;i++){
+    const nome = prompt("Digite o nome do jogador: ");
+    lista.push(new Jogador(nome))
+}
+
+console.log(lista);
+for (j=0; j<rodadas;j++){
+    for (let i of lista){
+        i.Rolar();
+    };
+
+    lista.sort(function (a, b) {
+        if (a.numeroTirado > b.numeroTirado) {
+        return 1;
+        }
+        if (a.numeroTirado < b.numeroTirado) {
+        return -1;
+        }
+        return 0;
+    });
+
+    if (lista[jogadores-1].numeroTirado !== lista[jogadores-2]?.numeroTirado){
+        lista[jogadores-1].vencedorRodada();
+    } else {
+        console.log("EMPATE NA RODADA")
+    };
+};
+
+lista.sort(function (a, b) {
+    if (a.vencedor > b.vencedor) {
+      return 1;
+    }
+    if (a.vencedor < b.vencedor) {
+      return -1;
+    }
+    return 0;
+});
+
+console.log(lista);
+if (lista[jogadores-1].vencedor !== lista[jogadores-2]?.vencedor){
+    console.log("O grande vencedor é: " + lista[jogadores-1].nome + "! Top, parabéns!!!!!!!!!");
+} else {
+    console.log("EMPATE GERAL!")
+};
