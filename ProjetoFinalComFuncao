@@ -1,0 +1,100 @@
+const prompt = require ('prompt-sync')();
+
+//ROTINA
+
+let contador = 0 
+
+function somaAcoes(x){
+  return x+=1
+}
+
+
+class Pessoa{
+    constructor(atividade){
+      this.atividade = atividade
+      this.contador = 0
+    }
+  
+    Acordar (malhar){
+      if (malhar == 1){
+        this.humor = this.humor + 10
+      } else if (malhar == 2){
+        this.humor = this.humor - 20
+        contador = somaAcoes(contador)
+        if (this.humor<0){
+            console.log("Demoramos " + contador + " ações para acabar com a paciência do jogador")
+        }
+      }
+      console.log(`Humor: ${this.humor}`)
+      
+    }
+
+    Trabalhar (cliente){
+        if (cliente == 1){
+        this.humor = this.humor - 50
+        contador = somaAcoes(contador)
+        if (this.humor<0){
+            console.log("Demoramos " + contador + " ações para acabar com a paciência do jogador")
+        }
+      }
+      console.log(`Humor: ${this.humor}`)
+    }
+  
+    Aula (aula){
+      if (aula == "18"){
+        this.humor = this.humor - 25
+        contador = somaAcoes(contador)
+      } else if (aula == 19){
+          this.humor = this.humor - 10
+          contador = somaAcoes(contador)
+      }
+      console.log(`Humor: ${this.humor}`)
+      if (this.humor<0){
+        console.log("Demoramos " + contador + " ações para acabar com a paciência do jogador")
+    }
+    }
+  
+    VoltaCasa (transito){
+      if (transito == 1){
+        this.humor = this.humor - 30
+        contador = somaAcoes(contador)
+      }
+      console.log(`Humor: ${this.humor}`)
+      if (this.humor<0){
+        console.log("Demoramos "+ contador + " ações para acabar com a paciência do jogador")
+    }
+    }
+}
+  
+class Fulano extends Pessoa{
+constructor(atividade){
+    super(atividade)
+    this.humor = 100
+}
+}
+
+let malhar;
+let cliente;
+let aula;
+let transito;
+
+console.log("Seja bem vindo(a) à vida de Fulano\nVamos descobrir quantas atividades diárias demora para o bom humor dessa pessoa acabar. 🤗");
+console.log()
+
+let jogador =  new Fulano(malhar);
+
+do{
+malhar = prompt("Você acha que o jogador deve malhar? 💪 Digite 1 para SIM e 2 para NÃO: ");
+jogador.Acordar(malhar);
+
+cliente = prompt("Cliente liga para o jogador? 🥵 Digite 1 para SIM e 2 para NÃO: ");
+jogador.Trabalhar(cliente);
+
+transito = prompt("O jogador vai pegar muito trânsito para chegar em casa do trabalho? Digite 1 para SIM e 2 para NÃO: ");
+jogador.VoltaCasa(transito);
+
+aula = prompt ("A aula do jogador de hoje começa às 18 ou às 19? Digite usando apenas números: ");
+jogador.Aula(aula);
+
+} while (jogador.humor>0)
+
