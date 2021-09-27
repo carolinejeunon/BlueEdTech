@@ -1,2 +1,2 @@
-# C008---Blue
+# BlueEdTech
 Repository of my programing class
